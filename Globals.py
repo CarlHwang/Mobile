@@ -19,4 +19,6 @@ with open('train_item.csv', 'rb') as f:
         category_set[category] = 1
         geohash_set[geohash] = 1
         print num, item_id, geohash, category
-    print len(item_set.keys()), len(geohash_set.keys()), len(category_set.keys())
+    print "商品数量", len(item_set.keys()), "地理位置数量", len(geohash_set.keys()), "种类数量",len(category_set.keys())
+    
+    
