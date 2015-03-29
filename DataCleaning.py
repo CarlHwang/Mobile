@@ -79,15 +79,13 @@ def cleanInvalidRecord():
             time = int(time)
             
             key = user_id + ' ' + item_id
-            if (not table.get(user_id + ' ' + item_id)) or table[key] < time:
+            
+            if (not table.get(key)) or table[key] < time:
                 
                 spamwriter.writerow(row)
             else:
                 print num
                 num += 1
-                    
-            
-            
              
 if __name__ == '__main__':
 #     timeToInt()
