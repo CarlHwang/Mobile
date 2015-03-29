@@ -19,3 +19,13 @@
 4. 	*feature* 用户-商品交叉行为时间
 	*des* 表示每个 用户-商品 对的行为时间，分别存放于click，collect，cart表中，其中，click表分为click1和click2表
 	*output* train_user_time_to_int_click1.csv / train_user_time_to_int_click2.csv / train_user_time_to_int_collect.csv / train_user_time_to_int_cart.csv
+
+---JK---
+
+5.	*feature* 用户-商品交叉行为次数
+	*des* 以user_id-item_id 对为索引，表示每个商品被click，collect，cart，deal的次数
+	*output* user_item_behavior_count.csv
+	
+6.	*feature* 商品重复购买率
+	*des* 每个商品的重复购买次数占总销量的比例，表达式为=（总销量-用户数）/总销量
+	*output* item_rebuy_rate.csv
