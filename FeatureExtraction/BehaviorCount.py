@@ -6,12 +6,12 @@ import csv
 # 获得每个商品的对于 不同行为 的人数
 def item_behavior_count():
     # 输出的文件头
-    outfile = open('item_behavior_count.csv', 'wb')
+    outfile = open('../csv/item_behavior_count.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['item_id', 'click', 'collect', 'cart', 'deal'])
     
     items = {}
-    with open('../train_user_time_to_int.csv', 'rb') as f:
+    with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
             item_id = row[1]
@@ -37,12 +37,12 @@ def item_behavior_count():
 
 def user_behavior_count():
     # 输出的文件头
-    outfile = open('../user_behavior_count.csv', 'wb')
+    outfile = open('../csv/user_behavior_count.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id', 'click', 'collect', 'cart', 'deal'])
     
     users = {}
-    with open('../train_user_time_to_int.csv', 'rb') as f:
+    with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
             user_id = row[0]
@@ -68,4 +68,4 @@ def user_behavior_count():
     
 if __name__ == '__main__':
     item_behavior_count()
-#     user_behavior_count()
+    user_behavior_count()
