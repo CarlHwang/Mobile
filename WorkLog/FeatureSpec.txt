@@ -11,7 +11,7 @@ J 购买频率：user_deal_freq.csv
 J 用户行为天数：user_behavior_day.csv
 C 用户转化率：user_conversion_rate.csv
 用户等级：
-C 平均购买前访问天数：
+C 平均购买前访问次数：user_access_before_deal.csv
 J 总购买品牌数：itemnum_per_user.csv
 
 品牌特征：
@@ -21,7 +21,7 @@ J 重复购买率：item_rebuy_rate.csv
 C 品牌转化率： item_conversion_rate.csv
 J 老顾客比例：
 成交量变化趋势：
-C 购买前访问次数：access_before_deal.csv
+C 平均购买前访问次数：item_access_before_deal.csv
 
 
 交叉特征：
