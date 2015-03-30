@@ -18,7 +18,7 @@ J 总购买品牌数：itemnum_per_user.csv
 C 层级四种行为次数：时间段内的 item_behavior_count.csv
 J 重复购买率：item_rebuy_rate.csv
 最近K天频率特征：对一件商品，在最近1/3/7/15/30天内，有多少天是有deal的
-C 转化率： ****
+C 品牌转化率： item_conversion_rate.csv
 J 老顾客比例：
 成交量变化趋势：
 C 购买前访问次数：access_before_deal.csv
