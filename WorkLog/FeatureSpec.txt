@@ -1,6 +1,6 @@
 行为特征：
 C 最后访问时间：user_last_access_time.csv
-C 平均访问间隔：每两次访问的时间差的平均值
+C 平均访问间隔：user_average_access_gap.csv
 C 层次行为次数：时间段内 user_behavior_count.csv
 C 层级行为天数：时间段内 user_behavior_count.csv 对应的行为，发生在多少天。
 C 对数特征：
