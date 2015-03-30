@@ -9,7 +9,7 @@ C 对数特征：
 C 四种行为次数：user_behavior_count.csv
 J 购买频率：user_deal_freq.csv
 J 用户行为天数：user_behavior_day.csv
-C 用户转化率：
+C 用户转化率：user_conversion_rate.csv
 用户等级：
 C 平均购买前访问天数：
 J 总购买品牌数：itemnum_per_user.csv
