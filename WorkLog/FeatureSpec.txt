@@ -4,6 +4,7 @@ C 平均访问间隔：user_average_access_gap.csv
 C 层次行为次数：时间段内 user_behavior_count.csv
 J 层级行为天数：时间段内 user_behavior_count.csv 对应的行为，发生在多少天。
 C 对数特征：
+C 最后访问时间的指数特征：user_last_access_time_exp.csv
 
 用户特征：
 C 四种行为次数：user_behavior_count.csv
