@@ -3,9 +3,7 @@
 
 import csv
 
-# ���ÿ����Ʒ�Ķ��� ��ͬ��Ϊ ������
 def user_item_behavior_count():
-    # ������ļ�ͷ
     outfile = open('../csv/user_item_behavior_count.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id', 'click', 'collect', 'cart', 'deal'])
@@ -22,7 +20,6 @@ def user_item_behavior_count():
             
             behavior_type = int(behavior_type)
             
-            # ���ͳ�Ƽ�����û�������Ʒ�����룬����У���Ӧ����Ϊ����+1
             if not items.get(item_id):
                 behaviors = [0,0,0,0]
                 behaviors[behavior_type-1] += 1
@@ -38,4 +35,3 @@ def user_item_behavior_count():
     
 if __name__ == '__main__':
     user_item_behavior_count()
-#     user_behavior_count()
