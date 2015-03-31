@@ -49,9 +49,9 @@ J UI-(收藏+购物车)次数 / U-(收藏+购物车)次数：ui_collect_cart_rat
 C I-点击次数 / C-其所在类别点击次数：ic_click_rate.csv
 C I-购买次数 / C-其所在类别购买次数：ic_deal_rate.csv
 C I-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：ic_collect_cart_rate.csv
-C UI-点击次数 / UC-其所在类别点击次数：
-C UI-购买次数 / UC-其所在类别购买次数：
-C UI-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：
+C UI-点击次数 / UC-其所在类别点击次数：uic_click_rate.csv
+C UI-购买次数 / UC-其所在类别购买次数：uic_deal_rate.csv
+C UI-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：uic_collect_cart_rate.csv
 C UI-用户在购买当前商品的前后6/12/24小时，共访问多少个不同的同类商品：
 J UI-最后一次访问时间 - 第一次访问时间（如果只有一次访问，设为窗口时间）：
 
