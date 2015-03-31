@@ -30,7 +30,7 @@ C 商品访问次数方差：对一件商品，每个小时有一个访问量，
 
 类别特征：
 C 类别四种行为次数：category_behavior_count.csv
-C 类别转化率：
+C 类别转化率：category_conversion_rate.csv
 
 交叉特征：
 行为用户交叉：对于一个用户，点击后买，收藏后买，购物车后买，买了再买的
