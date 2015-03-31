@@ -10,6 +10,7 @@
 C 最后访问时间：user_last_access_time.csv
 C 平均访问间隔：user_average_access_gap.csv
 C 最后访问时间的指数特征：user_last_access_time_exp.csv
+C 衰减系数：p(t) = (tmax - t)^-0.36
 C 对数特征：
 
 用户特征：
