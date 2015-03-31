@@ -29,8 +29,8 @@ C 平均购买前访问次数：item_access_before_deal.csv
 行为用户交叉：对于一个用户，点击后买，收藏后买，购物车后买，买了再买的
 商品的人均销量：卖出了多少件/卖给了多少人
 品牌圈特征：
-C UI-访问次数 x U转化率：ui_access_time_x_u_conversion_rate.csv
-C UI-访问次数 x I转化率：ui_access_time_x_i_conversion_rate.csv
+C UI-点击次数 x U转化率：ui_click_time_x_u_conversion_rate.csv
+C UI-点击次数 x I转化率：ui_click_time_x_i_conversion_rate.csv
 C UI-(收藏+购物车)次数 x U转化率：
 C UI-(收藏+购物车)次数 x I转化率：
 J UI-点击次数 / U-总点击次数：
