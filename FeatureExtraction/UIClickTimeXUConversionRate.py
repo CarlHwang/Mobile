@@ -26,7 +26,7 @@ def clickXConversionRate():
         for row in reader:
             user_id = row[0]
             item_id = row[1]
-            click = row[2]
+            click = row[3]
             
             if user_id == 'user_id':
                 continue

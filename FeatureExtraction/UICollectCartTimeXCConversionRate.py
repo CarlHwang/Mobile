@@ -5,19 +5,19 @@ import csv
 
 def collectCartXConversionRate():
     crTable = {}
-    with open('../csv/item_conversion_rate.csv', 'rb') as infile:
+    with open('../csv/category_conversion_rate.csv', 'rb') as infile:
         reader = csv.reader(infile)
         for row in reader:
-            item_id = row[0] 
+            item_category = row[0] 
             conversion_rate = row[1]
             
-            if item_id == 'item_id':
+            if item_category == 'item_category':
                 continue
             conversion_rate = float(conversion_rate)
-            crTable[item_id] = conversion_rate
+            crTable[item_category] = conversion_rate
     
     # 输出的文件头-
-    outfile = open('../csv/ui_collect_cart_x_i_conversion_rate.csv', 'wb')
+    outfile = open('../csv/ui_collect_cart_x_c_conversion_rate.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id', 'item_id', 'feature'])
     
@@ -26,6 +26,7 @@ def collectCartXConversionRate():
         for row in reader:
             user_id = row[0]
             item_id = row[1]
+            item_category = row[2]
             collect = row[4]
             cart = row[5]
             
@@ -35,7 +36,7 @@ def collectCartXConversionRate():
             collect = int(collect)
             cart = int(cart)
             
-            collectCartXcr = (collect + cart) * crTable[item_id]
+            collectCartXcr = (collect + cart) * crTable[item_category]
             spamwriter.writerow([user_id, item_id, collectCartXcr])
             
     print 'collectCartXConversionRate Done!'

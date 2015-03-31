@@ -26,8 +26,8 @@ def collectCartXConversionRate():
         for row in reader:
             user_id = row[0]
             item_id = row[1]
-            collect = row[3]
-            cart = row[4]
+            collect = row[4]
+            cart = row[5]
             
             if user_id == 'user_id':
                 continue
