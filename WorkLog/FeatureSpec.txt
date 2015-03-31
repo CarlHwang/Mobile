@@ -46,9 +46,9 @@ C UI-(收藏+购物车)次数 x C转化率：ui_collect_cart_x_c_conversion_rate
 J UI-点击次数 / U-总点击次数：ui_click_rate.csv
 J UI-购买次数 / U-总购买次数：ui_deal_rate.csv
 J UI-(收藏+购物车)次数 / U-(收藏+购物车)次数：ui_collect_cart_rate.csv
-C I-点击次数 / C-其所在类别点击次数：
-C I-购买次数 / C-其所在类别购买次数：
-C I-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：
+C I-点击次数 / C-其所在类别点击次数：ic_click_rate.csv
+C I-购买次数 / C-其所在类别购买次数：ic_deal_rate.csv
+C I-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：ic_collect_cart_rate.csv
 C UI-点击次数 / UC-其所在类别点击次数：
 C UI-购买次数 / UC-其所在类别购买次数：
 C UI-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：
