@@ -11,7 +11,6 @@ C 四种行为次数：user_behavior_count.csv
 J 购买频率：user_deal_freq.csv
 J 用户行为小时数：user_behavior_hour.csv
 C 用户转化率：user_conversion_rate.csv
-用户等级：
 C 平均购买前访问次数：user_access_before_deal.csv
 J 总购买品牌数：itemnum_per_user.csv
 
@@ -20,7 +19,7 @@ C 层级四种行为次数：时间段内的 item_behavior_count.csv
 J 重复购买率：item_rebuy_rate.csv
 最近K天频率特征：对一件商品，在最近1/3/7/15/30天内，有多少天是有deal的
 C 品牌转化率： item_conversion_rate.csv
-J 老顾客比例： old_user_per.csv
+J 老顾客比例： item_old_customer_proportion.csv
 成交量变化趋势：
 C 平均购买前访问次数：item_access_before_deal.csv
 
