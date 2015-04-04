@@ -58,7 +58,7 @@ C UI-点击次数 / UC-其所在类别点击次数：uic_click_rate.csv
 C UI-购买次数 / UC-其所在类别购买次数：uic_deal_rate.csv
 C UI-(收藏+购物车)次数 / C-其所在类别(收藏+购物车)次数：uic_collect_cart_rate.csv
 C UI-用户在购买当前商品的前后6/12/24小时，共访问多少个不同的同类商品：
-J UI-最后一次访问时间 - 第一次访问时间（如果只有一次访问，设为窗口时间）：
+J UI-最后一次访问时间 - 第一次访问时间（如果只有一次访问，设为窗口时间）：ui_fisrt_to_last_access_time.csv
 
 层级特征：（确定最优滑窗长度再行提取）
 C 层次行为次数：时间段内 user_behavior_count.csv
