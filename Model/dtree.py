@@ -7,13 +7,20 @@
 from dnode import decisionnode
 import random
 
-class decisiontree():
+class DecisionTree():
     
-    def __init__(self, dataset, criterion=gini, min_sample_split=5, max_depth=None):
+    def __init__(self, 
+                dataset, 
+                criterion=gini, 
+                min_sample_split=5, 
+                max_depth=None):
+        
         self.root = self.buildrandomtree(dataset, 0, min_sample_split, max_depth)
         self.criterion = criterion
         pass
     
+    def classify(self, vec):
+        pass
     
     def divideset(self, dataset, axis, value):
         ''''Make a function that tells us if a row is in 
@@ -60,7 +67,7 @@ class decisiontree():
         return gini
 
 
-    def uniquelabels(self, dataset):
+    def uniqueLabels(self, dataset):
         labels = {}
         for row in dataset:
             r = row[-1]
@@ -70,7 +77,7 @@ class decisiontree():
         return labels
     
     
-    def getvotinglabel(self, dataset):
+    def getVotingLabel(self, dataset):
         random_pick = False
         labels = self.uniquelabels(dataset)
         winner_label, winner_value = None, 0
@@ -85,7 +92,7 @@ class decisiontree():
         return winner_label
     
     
-    def picksplitfeat(self, dataset, criterion=gini, random_pick=-1):
+    def pickSplitFeat(self, dataset, criterion=gini, random_pick=-1):
         '''pick a best split feature and its split point for spliting,
         return the feature index and the value.'''
         
@@ -122,7 +129,7 @@ class decisiontree():
         return split_feat, split_val
     
     
-    def buildrandomtree(self, dataset, current_level, min_sample_split=5, max_depth=None, neighbor_label=None):
+    def buildRandomTree(self, dataset, current_level, min_sample_split=5, max_depth=None, neighbor_label=None):
         '''Recursive build a tree, once separate the data
         set to 2 part, each of them is a subtree.'''
         
@@ -130,14 +137,14 @@ class decisiontree():
         # that each of them is empty. If so, the next tree building
         # process will assign a empty decision node to it.
         
-        lendataset = len(dataset)
+        sizedataset = len(dataset)
         current_level += 1
         
         # stop split condition
-        if lendataset == 0: 
+        if sizedataset == 0: 
             return decisionnode(label=neighbor_label)
         
-        if lendataset <= min_sample_split: 
+        if sizedataset <= min_sample_split: 
             return decisionnode(label=self.getvotinglabel(dataset))
         
         if current_level < max_depth:
