@@ -28,4 +28,3 @@ def ReadDataset(dataset_name):
     
     return dataset
 
-ReadDataset('dataset')
