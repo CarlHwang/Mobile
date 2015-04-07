@@ -38,4 +38,39 @@ def AccessBeforeDeal():
         
     print "UAccessBeforeDeal Done!"
 
-AccessBeforeDeal()
+if __name__ == '__main__':
+    AccessBeforeDeal()
+    pass
+
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+        
+        
+def GetUserAccessBeforeDeal(outputTable):
+    inputTable = {}
+    maxAccessBeforeDeal = 0
+    with open('../csv/user_access_before_deal.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]
+            access_before_deal = row[1]
+            
+            if user_id == 'user_id':
+                continue
+            
+            inputTable[user_id] = access_before_deal
+            maxAccessBeforeDeal = max(maxAccessBeforeDeal, access_before_deal)
+    
+    for key in outputTable.keys():
+        user_id = key.split()[0]
+        if not inputTable.get(user_id):
+            outputTable[key]['access_before_deal'] = maxAccessBeforeDeal
+        else:
+            outputTable[key]['access_before_deal'] = inputTable[user_id]
+        

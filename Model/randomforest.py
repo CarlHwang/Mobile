@@ -211,9 +211,11 @@ class RandomForest():
     
     
     def calFeatureImportance(self, dataset):
-        importance = []
+        importances = []
+        Eoob = self.outOfBagError(dataset)
         for feature_index in range(dataset[0] - 1):
-            importance.append(self.outOfBagErrorPermuted(dataset, feature_index))
+            importance = Eoob - self.outOfBagErrorPermuted(dataset, feature_index)
+            importances.append(importance)
             
             
     '''

@@ -17,7 +17,7 @@ def item_behavior_count():
             item_id = row[1]
             behavior_type = row[2]
 
-            if(len(behavior_type) > 2):
+            if item_id == 'item_id':
                 continue
             
             behavior_type = int(behavior_type)
@@ -96,8 +96,44 @@ def category_behavior_count():
     for key in categorys.keys():
         behaviors = categorys.get(key)
         spamwriter.writerow([key, behaviors[0], behaviors[1], behaviors[2], behaviors[3]])
+
         
 if __name__ == '__main__':
 #     item_behavior_count()
 #     user_behavior_count()
-    category_behavior_count()
+#     category_behavior_count()
+    pass
+    
+    
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+    
+    
+def GetItemBehaviorCount(outputTable):
+    inputTable = {}
+    with open('../csv/item_behavior_count.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            click = row[1]
+            collect = row[2]
+            cart = row[3]
+            deal = row[4]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = {'item_click_count':click, 'item_collect_count':collect, 'item_cart_count':cart, 'item_deal_count':deal}
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        outputTable[key]['item_click_count'] = inputTable[item_id]['item_click_count']
+        outputTable[key]['item_collect_count'] = inputTable[item_id]['item_collect_count']
+        outputTable[key]['item_cart_count'] = inputTable[item_id]['item_cart_count']
+        outputTable[key]['item_deal_count'] = inputTable[item_id]['item_deal_count']
+        

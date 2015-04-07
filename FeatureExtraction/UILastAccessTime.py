@@ -131,18 +131,18 @@ def writeBehGap(btype, table):
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id', 'item_id', 'click_gap1', 'click_gap2', 'collect_gap', 'cart_gap', 'click_before1', 'click_before2', 'collect_before', 'cart_before', 'time'])
 
-    
     for record in lastAccessTimeTable:
         spamwriter.writerow(record)
+        
 
 def getLastAccessTime(table, key, value):
     ret = -1
     count = 0
     if table.get(key):
         times = table[key]
-        for i in range(len(times)):
-            if value >= times[i]:
-                ret = times[i]
+        for time in times:
+            if value >= time:
+                ret = time
                 count += 1
             else:
                 break
@@ -162,6 +162,7 @@ def addToTable(table, key, value):
                 table[key].append(value)
                 return
             
+
 if __name__ == '__main__':
     initTableOverItem()
     lastAccessTimeOverItemForBeh('1.1')   # for click1
