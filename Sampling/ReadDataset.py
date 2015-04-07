@@ -4,9 +4,28 @@
 
 import csv
 
-def ReadDataset(sampling_rate):
+def ReadDataset(dataset_name):
     
-    with open('../csv/label.csv', 'rb') as f:
+    dataset = []
+    
+    path = '../csv/trainningset/' + dataset_name + '.csv'
+    with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
             user_id = row[0]
+            
+            if user_id == 'user_id':
+                continue
+            
+            rowlen = len(row)
+            sample = []
+            for i in range(2,rowlen-1):
+                sample.append(float(row[i]))
+            sample.append(int(row[-1]))
+                
+            dataset.append(sample)
+            print sample
+    
+    return dataset
+
+ReadDataset('dataset')

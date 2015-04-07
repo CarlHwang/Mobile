@@ -59,7 +59,7 @@ def MakeDateset(sampling_rate):
         
         spamwriter.writerow([user_id, item_id, user_average_access_gap, item_click_count, item_collect_count, item_cart_count, item_deal_count, access_before_deal, label])
             
-    print total, select    
+    print total, select
     
 MakeDateset(0.2)
     
