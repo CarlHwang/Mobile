@@ -3,7 +3,7 @@
 
 import csv
 
-def collectCartXConversionRate():
+def UICollectCartXUConversionRate():
     crTable = {}
     with open('../csv/user_conversion_rate.csv', 'rb') as infile:
         reader = csv.reader(infile)
@@ -38,9 +38,8 @@ def collectCartXConversionRate():
             collectCartXcr = (collect + cart) * crTable[user_id]
             spamwriter.writerow([user_id, item_id, collectCartXcr])
             
-    print 'collectCartXConversionRate Done!'
+    print 'UICollectCartXUConversionRate Done!'
     
-collectCartXConversionRate()
             
             
 '''
@@ -50,20 +49,25 @@ collectCartXConversionRate()
 #
 #
 '''
-def GetUIcollectCartXConversionRate(outputTable):
+def GetUICollectCartXUConversionRate(outputTable):
     inputTable = {}
     with open('../csv/ui_collect_cart_x_u_conversion_rate.csv', 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
-            user_id = row[0]+' '+row[1]
+            user_id = row[0]
+            item_id = row[1]
             feature = row[2]
             
             if user_id == 'user_id':
                 continue
             
-            inputTable[user_id] = float(feature)            
-    
+            key = user_id + ' ' + item_id
+            inputTable[key] = float(feature)
+            
     for key in outputTable.keys():
-        outputTable[key]['collect_cart_x_u_conversion_rate'] = inputTable[key]
+        if not inputTable.get(key):
+            outputTable[key].append(0)
+        else:
+            outputTable[key].append(inputTable[key])
         
         

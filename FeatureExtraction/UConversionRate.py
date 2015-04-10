@@ -3,7 +3,7 @@
 
 import csv
 
-def ConversionRate():
+def UConversionRate():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -38,7 +38,6 @@ def ConversionRate():
         
     print 'UConversionRate Done!'
         
-ConversionRate()
 
 '''
 #
@@ -47,7 +46,7 @@ ConversionRate()
 #
 #
 '''
-def GetUserConversionRate(outputTable):
+def GetUConversionRate(outputTable):
     inputTable = {}
     with open('../csv/user_conversion_rate.csv', 'rb') as f:
         reader = csv.reader(f)

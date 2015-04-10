@@ -3,7 +3,7 @@
 
 import csv
 
-def CollectCartRate():
+def UICCollectCartRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -56,9 +56,8 @@ def CollectCartRate():
             else:
                 spamwriter.writerow([user_id, item_id, itemTable[item_id][user_id]/float(categoryTable[item_category][user_id])])
 
-    print 'CollectCartRate() Done!'
+    print 'UICCollectCartRate() Done!'
     
-CollectCartRate()
 '''
 #
 #

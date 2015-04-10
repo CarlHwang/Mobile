@@ -3,7 +3,7 @@
 
 import csv
 
-def DealRate():
+def UIDealRate():
     outfile = open('../csv/ui_deal_rate.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id', 'ui_deal_rate'])
@@ -35,8 +35,7 @@ def DealRate():
                 rate = ui_deal/float(user_total_deal)
                 spamwriter.writerow([ui_id,item_id,rate])
              
-if __name__ == '__main__':
-    DealRate()
+
     
 '''
 #
@@ -47,15 +46,17 @@ if __name__ == '__main__':
 '''
 def GetUIDealRate(outputTable):
     inputTable = {}
-    with open('../csv/ui_deal_rate.csv', 'rb') as f:
-        reader = csv.reader(f)
+    with open('../csv/ui_deal_rate.csv', 'rb') as reader:
         for row in reader:
-            ui_id = row[0]+' '+row[1]
-            DealRate = row[2]
+            user_id = row[0]
+            item_id = row[1]
+            feature = row[2]
             
-            if row[0] == 'user_id':
+            if user_id == 'user_id':
                 continue
-            inputTable[ui_id] = float(DealRate)            
+            
+            key = user_id + ' ' + item_id
+            inputTable[key] = float(feature)        
     
     for key in outputTable.keys():
         if not inputTable.get(key):

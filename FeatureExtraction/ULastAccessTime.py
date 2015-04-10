@@ -2,9 +2,10 @@
 # -*- coding:utf-8 -*-
 
 import csv
+from Globals import SplitHour
 
 # 用户最后（近）一次访问距离‘分割点’（数据集最后大时刻）多远
-def LastAccessTime():
+def ULastAccessTime():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -16,16 +17,13 @@ def LastAccessTime():
                 continue
             
             time = int(time)
+            gap = SplitHour - time + 1
             
             if table.get(user_id):
-                table[user_id] = max(table[user_id], time)
+                table[user_id] = min(table[user_id], gap)
             else:
-                table[user_id] = time
-                
-    tmax = max(table.values())
-    print tmax
-    for key in table.keys():
-        table[key] = tmax - table[key]            
+                table[user_id] = gap
+                          
     
     # 输出的文件头
     outfile = open('../csv/user_last_access_time.csv', 'wb')
@@ -35,7 +33,6 @@ def LastAccessTime():
     for key in table.keys():
         spamwriter.writerow([key, table[key]])
         
-LastAccessTime()
 '''
 #
 #
@@ -43,7 +40,7 @@ LastAccessTime()
 #
 #
 '''
-def GetUserLastAccessTime(outputTable):
+def GetULastAccessTime(outputTable):
     inputTable = {}
     with open('../csv/user_last_access_time.csv', 'rb') as f:
         reader = csv.reader(f)

@@ -3,7 +3,7 @@
 
 import csv
 
-def AccessBeforeDeal():
+def IAccessBeforeDeal():
     table = {}
     with open('../csv/last_access_time.csv', 'rb') as infile:
         reader = csv.reader(infile)
@@ -38,7 +38,6 @@ def AccessBeforeDeal():
         
     print "IAccessBeforeDeal Done!"
 
-AccessBeforeDeal()
 
 '''
 #
@@ -47,7 +46,7 @@ AccessBeforeDeal()
 #
 #
 '''
-def GetAccessBeforeDeal(outputTable):
+def GetIAccessBeforeDeal(outputTable):
     inputTable = {}
     with open('../csv/item_access_before_deal.csv', 'rb') as f:
         reader = csv.reader(f)

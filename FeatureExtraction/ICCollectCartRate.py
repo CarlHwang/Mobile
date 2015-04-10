@@ -3,7 +3,7 @@
 
 import csv
 
-def CollectCartRate():
+def ICCollectCartRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -50,7 +50,7 @@ def CollectCartRate():
 
     print 'CollectCartRate() Done!'
     
-CollectCartRate()
+
 
 '''
 #
@@ -59,7 +59,7 @@ CollectCartRate()
 #
 #
 '''
-def GetCollectCartRate(outputTable):
+def GetICCollectCartRate(outputTable):
     inputTable = {}
     with open('../csv/ic_collect_cart_rate.csv', 'rb') as f:
         reader = csv.reader(f)

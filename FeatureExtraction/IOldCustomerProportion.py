@@ -3,7 +3,7 @@
 
 import csv
 
-def OldCustomerProportion():
+def IOldCustomerProportion():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -51,7 +51,6 @@ def OldCustomerProportion():
         
     print 'IOldCustomerProportion Done!'
         
-OldCustomerProportion()
 
 '''
 #
@@ -60,7 +59,7 @@ OldCustomerProportion()
 #
 #
 '''
-def GetOldCustomerProportion(outputTable):
+def GetIOldCustomerProportion(outputTable):
     inputTable = {}
     with open('../csv/item_old_customer_proportion.csv', 'rb') as f:
         reader = csv.reader(f)

@@ -3,7 +3,7 @@
 
 import csv
 
-def DealRate():
+def UICDealRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -54,9 +54,8 @@ def DealRate():
             else:
                 spamwriter.writerow([user_id, item_id, itemTable[item_id][user_id]/float(categoryTable[item_category][user_id])])
 
-    print 'DealRate() Done!'
+    print 'UICDealRate() Done!'
     
-DealRate()
 
 '''
 #
@@ -65,7 +64,7 @@ DealRate()
 #
 #
 '''
-def GetUICDealate(outputTable):
+def GetUICDealRate(outputTable):
     inputTable = {}
     with open('../csv/uic_deal_rate.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -79,9 +78,6 @@ def GetUICDealate(outputTable):
             inputTable[ui_id] = float(deal_rate)            
     
     for key in outputTable.keys():
-#         if not inputTable.get(key):
-#             outputTable[key]['uic_deal_rate'] = 0
-#         else:
         outputTable[key].append(inputTable[key])
 
 

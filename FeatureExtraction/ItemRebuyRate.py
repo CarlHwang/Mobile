@@ -42,11 +42,7 @@ def ItemRebuyRate():
 
                 print item_id_deal,rate,deal,user_num
 
-             
 
-if __name__ == '__main__':
-    ItemRebuyRate()
-    
     '''
 #
 #

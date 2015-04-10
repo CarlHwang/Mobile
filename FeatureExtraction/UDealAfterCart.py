@@ -3,7 +3,7 @@
 
 import csv
 
-def DealAferCart():
+def UDealAferCart():
 
 
     cart_time_table = {}
@@ -58,9 +58,6 @@ def DealAferCart():
 
     rate = deal_cart_num/float(cart_num)
     print deal_cart_num,cart_num,rate
-             
-if __name__ == '__main__':
-    DealAferCart()
-    
+
     
     

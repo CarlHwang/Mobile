@@ -3,7 +3,7 @@
 
 import csv
 
-def ClickRate():
+def ICClickRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -49,7 +49,6 @@ def ClickRate():
 
     print 'ClickRate Done!'
 
-ClickRate()
 
 '''
 #
@@ -58,7 +57,7 @@ ClickRate()
 #
 #
 '''
-def GetClickRate(outputTable):
+def GetICClickRate(outputTable):
     inputTable = {}
     with open('../csv/ic_click_rate.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -77,5 +76,4 @@ def GetClickRate(outputTable):
             outputTable[key].append(0)
         else:
             outputTable[key].append(inputTable[item_id])
-
 

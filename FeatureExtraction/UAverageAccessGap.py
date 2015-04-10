@@ -5,7 +5,7 @@ from Sampling import Tool
 import csv
 
 # 用户在数据集所包含的时间范围内，平均每两次访问的间隔，如果这段时间内只有1次访问，则以数据集的时间跨度作为间隔
-def AverageAccessGap():
+def UAverageAccessGap():
     table = {}
     maxTime, minTime = -1, -1
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
@@ -51,10 +51,7 @@ def AverageAccessGap():
         spamwriter.writerow([user_id, gapTable[user_id]])
         
     print 'UAverageAccessGap Over'
-        
-if __name__ == '__main__':
-    AverageAccessGap()
-    pass
+
 
 '''
 #
@@ -64,7 +61,7 @@ if __name__ == '__main__':
 #
 '''
 
-def GetUserAvgAccessGap(outputTable):
+def GetUAverageAccessGap(outputTable):
     inputTable = {}
     with open('../csv/user_average_access_gap.csv', 'rb') as f:
         reader = csv.reader(f)

@@ -3,7 +3,7 @@
 
 import csv
 
-def CollectCartRate():
+def UICollectCartRate():
     outfile = open('../csv/ui_collect_cart_rate.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id', 'collect_cart_rate'])
@@ -35,9 +35,7 @@ def CollectCartRate():
                 rate = ui_cc/float(user_total_deal)
                 spamwriter.writerow([ui_id,item_id,rate])
              
-if __name__ == '__main__':
-    CollectCartRate()
-    
+
 
 '''
 #

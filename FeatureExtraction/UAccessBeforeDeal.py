@@ -4,7 +4,7 @@
 from Sampling import Tool
 import csv
 
-def AccessBeforeDeal():
+def UAccessBeforeDeal():
     table = {}
     with open('../csv/last_access_time.csv', 'rb') as infile:
         reader = csv.reader(infile)
@@ -39,10 +39,6 @@ def AccessBeforeDeal():
         
     print "UAccessBeforeDeal Done!"
 
-if __name__ == '__main__':
-    AccessBeforeDeal()
-    pass
-
 
 '''
 #
@@ -53,7 +49,7 @@ if __name__ == '__main__':
 '''
         
         
-def GetUserAccessBeforeDeal(outputTable):
+def GetUAccessBeforeDeal(outputTable):
     inputTable = {}
     maxAccessBeforeDeal = 0
     with open('../csv/user_access_before_deal.csv', 'rb') as f:

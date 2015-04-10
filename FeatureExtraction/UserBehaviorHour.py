@@ -14,10 +14,12 @@ def UserBehaviorHour():
         reader = csv.reader(f)
         for row in reader:
             user_id = row[0]
+            time = row[5]
                         
-            if(row[5]=='time'):
+            if user_id == 'user_id':
                 continue
-            time=int(row[5])
+            time=int(time)
+            
             if not users.get(user_id):
                 hour=[0]
                 hour[0]= time

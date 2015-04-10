@@ -5,7 +5,7 @@ import csv
 import numpy as np
 import math
 
-def LastAccessTimeExponent():
+def ULastAccessTimeExponent():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -39,7 +39,6 @@ def LastAccessTimeExponent():
         
     print 'ULastAccessTimeExponent Done!'
         
-LastAccessTimeExponent()
 
 
 '''
@@ -49,7 +48,7 @@ LastAccessTimeExponent()
 #
 #
 '''   
-def GetUserLastAccessTimeExponent(outputTable):
+def GetULastAccessTimeExponent(outputTable):
     inputTable = {}
     with open('../csv/user_last_access_time_exp.csv', 'rb') as f:
         reader = csv.reader(f)

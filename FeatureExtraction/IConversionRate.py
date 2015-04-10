@@ -3,7 +3,7 @@
 
 import csv
 
-def ConversionRate():
+def ICConversionRate():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -38,7 +38,6 @@ def ConversionRate():
         
     print 'IConversionRate Done!'
         
-ConversionRate()
 
 '''
 #
@@ -47,7 +46,7 @@ ConversionRate()
 #
 #
 '''
-def GetIConversionRate(outputTable):
+def GetICConversionRate(outputTable):
     inputTable = {}
     with open('../csv/item_conversion_rate.csv', 'rb') as f:
         reader = csv.reader(f)

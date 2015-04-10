@@ -3,7 +3,7 @@
 
 import csv
 
-def ConversionRate():
+def CConversionRate():
     table = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -38,7 +38,6 @@ def ConversionRate():
         
     print 'CConversionRate Done!'
         
-ConversionRate()
 
 '''
 #

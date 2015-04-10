@@ -3,7 +3,7 @@
 
 import csv
 
-def ClickRate():
+def UICClickRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -54,9 +54,8 @@ def ClickRate():
             else:
                 spamwriter.writerow([user_id, item_id, itemTable[item_id][user_id]/float(categoryTable[item_category][user_id])])
 
-    print 'ClickRate() Done!'
+    print 'UICClickRate() Done!'
     
-ClickRate()
 
 '''
 #
@@ -65,7 +64,7 @@ ClickRate()
 #
 #
 '''
-def GetClickRate(outputTable):
+def GetUICClickRate(outputTable):
     inputTable = {}
     with open('../csv/uic_click_rate.csv', 'rb') as f:
         reader = csv.reader(f)

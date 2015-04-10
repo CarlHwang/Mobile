@@ -3,7 +3,7 @@
 
 import csv
 
-def clickXConversionRate():
+def UIClickXIConversionRate():
     crTable = {}
     with open('../csv/item_conversion_rate.csv', 'rb') as infile:
         reader = csv.reader(infile)
@@ -35,9 +35,8 @@ def clickXConversionRate():
             clickXcr = click * crTable[item_id]
             spamwriter.writerow([user_id, item_id, clickXcr])
             
-    print 'clickXConversionRate Done!'
+    print 'UIClickXIConversionRate Done!'
     
-clickXConversionRate()
 
 '''
 #
@@ -46,7 +45,7 @@ clickXConversionRate()
 #
 #
 '''   
-def GetclickXConversionRate(outputTable):
+def GetUIClickXIConversionRate(outputTable):
     inputTable = {}
     with open('../csv/ui_click_x_i_conversion_rate.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -61,9 +60,9 @@ def GetclickXConversionRate(outputTable):
     
     for key in outputTable.keys():
         if not inputTable.get(key):
-            outputTable[key]['conversion_rate'] = 0
+            outputTable[key].append(0)
         else:
-            outputTable[key]['conversion_rate'] = inputTable[key]
+            outputTable[key].append(inputTable[key])
 
 
             

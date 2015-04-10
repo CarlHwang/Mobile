@@ -3,7 +3,7 @@
 
 import csv
 
-def user_item_behavior_count():
+def UserItemBehaviorCount():
     outfile = open('../csv/user_item_behavior_count.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id','item_category', 'click', 'collect', 'cart', 'deal'])
@@ -24,20 +24,16 @@ def user_item_behavior_count():
             
             key = user_id+' '+item_id+' '+item_category
             if not items.get(key):
-                behaviors = [0,0,0,0]
-                behaviors[behavior_type-1] += 1
-                items[key] = behaviors
-            else:
-                items[key][behavior_type-1] += 1
+                items[key] = [0,0,0,0]
+                
+            items[key][behavior_type-1] += 1
             print item_id, behavior_type
     
     for key in items.keys():
         behaviors = items.get(key)
         a=key.split()
         spamwriter.writerow([a[0],a[1],a[2], behaviors[0], behaviors[1], behaviors[2], behaviors[3]])   
-    
-if __name__ == '__main__':
-    user_item_behavior_count()
+
 
 
 '''
@@ -47,7 +43,7 @@ if __name__ == '__main__':
 #
 #
 '''
-def GetItemBehaviorCount(outputTable):
+def GetUserItemBehaviorCount(outputTable):
     inputTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
         reader = csv.reader(f)

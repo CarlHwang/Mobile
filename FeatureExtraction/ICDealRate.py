@@ -3,7 +3,7 @@
 
 import csv
 
-def DealRate():
+def ICDealRate():
     itemTable = {}
     categoryTable = {}
     with open('../csv/user_item_behavior_count.csv', 'rb') as f:
@@ -49,7 +49,6 @@ def DealRate():
 
     print 'DealRate() Done!'
     
-DealRate()
 
 '''
 #
@@ -58,7 +57,7 @@ DealRate()
 #
 #
 '''
-def GetDealRate(outputTable):
+def GetICDealRate(outputTable):
     inputTable = {}
     with open('../csv/ic_deal_rate.csv', 'rb') as f:
         reader = csv.reader(f)

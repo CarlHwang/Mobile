@@ -3,7 +3,7 @@
 
 import csv
 
-def ClickRate():
+def UICClickRate():
     outfile = open('../csv/ui_click_rate.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id', 'ui_click_rate'])
@@ -33,9 +33,7 @@ def ClickRate():
                 user_total_click = user_click_num[ui_id]
                 rate = ui_click/float(user_total_click)
                 spamwriter.writerow([ui_id,item_id,rate])
-             
-if __name__ == '__main__':
-    ClickRate()
+
 '''
 #
 #
@@ -43,7 +41,7 @@ if __name__ == '__main__':
 #
 #
 '''   
-def GetUIClickRate(outputTable):
+def GetUICClickRate(outputTable):
     inputTable = {}
     #minUserDealFreq = 0
     with open('../csv/ui_click_rate.csv', 'rb') as f:
