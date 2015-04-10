@@ -36,3 +36,30 @@ def LastAccessTime():
         spamwriter.writerow([key, table[key]])
         
 LastAccessTime()
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetUserLastAccessTime(outputTable):
+    inputTable = {}
+    with open('../csv/user_last_access_time.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]
+            LastAccessTime = row[1]
+            
+            if user_id == 'user_id':
+                continue
+            
+            inputTable[user_id] = float(LastAccessTime)            
+    
+    for key in outputTable.keys():
+        user_id = key.split()[0]
+        outputTable[key].append(inputTable[user_id])
+        
+        
+        
+        

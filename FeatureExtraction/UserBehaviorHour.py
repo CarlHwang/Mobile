@@ -4,7 +4,7 @@
 import csv
 
 # ���ÿ����Ʒ�Ķ��� ��ͬ��Ϊ ������
-def user_behavior_hour():
+def UserBehaviorHour():
     # 输出的文件头
     outfile = open('../csv/user_behavior_hour.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
@@ -34,5 +34,32 @@ def user_behavior_hour():
         spamwriter.writerow([key, len(hour)])
     
 if __name__ == '__main__':
-    user_behavior_hour()
+    UserBehaviorHour()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetUserBehaviorHour(outputTable):
+    inputTable = {}
+    #minUserDealFreq = 0
+    with open('../csv/user_behavior_hour.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]
+            UserBehaviorHour = row[1]
+            
+            if user_id == 'user_id':
+                continue
+            
+            inputTable[user_id] = float(UserBehaviorHour)            
     
+    for key in outputTable.keys():
+        user_id = key.split()[0]
+        outputTable[key].append(inputTable[user_id])
+        
+        
+        

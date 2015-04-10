@@ -1,6 +1,7 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
 
+from Sampling import Tool
 import csv
 
 def AccessBeforeDeal():
@@ -64,13 +65,14 @@ def GetUserAccessBeforeDeal(outputTable):
             if user_id == 'user_id':
                 continue
             
-            inputTable[user_id] = access_before_deal
+            inputTable[user_id] = float(access_before_deal)
             maxAccessBeforeDeal = max(maxAccessBeforeDeal, access_before_deal)
+            
     
     for key in outputTable.keys():
         user_id = key.split()[0]
         if not inputTable.get(user_id):
-            outputTable[key]['access_before_deal'] = maxAccessBeforeDeal
+            outputTable[key].append(maxAccessBeforeDeal)
         else:
-            outputTable[key]['access_before_deal'] = inputTable[user_id]
+            outputTable[key].append(inputTable[user_id])
         

@@ -59,3 +59,28 @@ def CollectCartRate():
     print 'CollectCartRate() Done!'
     
 CollectCartRate()
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetUICCollectCartRate(outputTable):
+    inputTable = {}
+    with open('../csv/uic_collect_cart_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ui_id = row[0]+' '+row[1]
+            CollectCartRate = row[2]
+            
+            if row[0] == 'user_id':
+                continue
+            
+            inputTable[ui_id] = float(CollectCartRate)            
+    
+    for key in outputTable.keys():
+        if not inputTable.get(key):
+            outputTable[key].append(0)
+        else:
+            outputTable[key].append(inputTable[key])

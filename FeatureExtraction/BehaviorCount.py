@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
+from Sampling import Tool
 
 import csv
 
@@ -99,9 +100,9 @@ def category_behavior_count():
 
         
 if __name__ == '__main__':
-#     item_behavior_count()
-#     user_behavior_count()
-#     category_behavior_count()
+    item_behavior_count()
+    user_behavior_count()
+    category_behavior_count()
     pass
     
     
@@ -128,12 +129,15 @@ def GetItemBehaviorCount(outputTable):
             if item_id == 'item_id':
                 continue
             
-            inputTable[item_id] = {'item_click_count':click, 'item_collect_count':collect, 'item_cart_count':cart, 'item_deal_count':deal}
-    
+            inputTable[item_id] = [click,collect,cart,deal]
+   
     for key in outputTable.keys():
         item_id = key.split()[1]
-        outputTable[key]['item_click_count'] = inputTable[item_id]['item_click_count']
-        outputTable[key]['item_collect_count'] = inputTable[item_id]['item_collect_count']
-        outputTable[key]['item_cart_count'] = inputTable[item_id]['item_cart_count']
-        outputTable[key]['item_deal_count'] = inputTable[item_id]['item_deal_count']
+        outputTable[key].extend(inputTable[item_id])
+        
+        
+#         outputTable[key]['item_click_count'] = inputTable[item_id]['item_click_count']
+#         outputTable[key]['item_collect_count'] = inputTable[item_id]['item_collect_count']
+#         outputTable[key]['item_cart_count'] = inputTable[item_id]['item_cart_count']
+#         outputTable[key]['item_deal_count'] = inputTable[item_id]['item_deal_count']
         

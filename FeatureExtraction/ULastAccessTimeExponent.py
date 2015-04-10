@@ -42,3 +42,27 @@ def LastAccessTimeExponent():
 LastAccessTimeExponent()
 
 
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''   
+def GetUserLastAccessTimeExponent(outputTable):
+    inputTable = {}
+    with open('../csv/user_last_access_time_exp.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]
+            LastAccessTimeExponent = row[1]
+            
+            if user_id == 'user_id':
+                continue
+            
+            inputTable[user_id] = float(LastAccessTimeExponent)            
+    
+    for key in outputTable.keys():
+        user_id = key.split()[0]
+        outputTable[key].append(inputTable[user_id])
+

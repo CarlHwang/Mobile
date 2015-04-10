@@ -7,7 +7,6 @@ def user_item_behavior_count():
     outfile = open('../csv/user_item_behavior_count.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
     spamwriter.writerow(['user_id','item_id','item_category', 'click', 'collect', 'cart', 'deal'])
-    a = []
     items = {}
     with open('../csv/train_user_time_to_int_cleaned.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -39,3 +38,32 @@ def user_item_behavior_count():
     
 if __name__ == '__main__':
     user_item_behavior_count()
+
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetItemBehaviorCount(outputTable):
+    inputTable = {}
+    with open('../csv/user_item_behavior_count.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ui_id = row[0]+' '+row[1]
+            click = row[2]
+            collect = row[3]
+            cart = row[4]
+            deal = row[5]
+            
+            if row[0] == 'user_id':
+                continue
+            
+            inputTable[ui_id] = [click,collect,cart,deal]
+   
+    for key in outputTable.keys():
+        outputTable[key].extend(inputTable[key])
+    
+

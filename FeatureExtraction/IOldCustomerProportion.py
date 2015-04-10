@@ -32,7 +32,7 @@ def OldCustomerProportion():
     # 输出的文件头
     outfile = open('../csv/item_old_customer_proportion.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
-    spamwriter.writerow(['user_id', 'proportion'])
+    spamwriter.writerow(['item_id', 'proportion'])
     for item in table:
         userDict = table[item]
         num = 0
@@ -52,3 +52,27 @@ def OldCustomerProportion():
     print 'IOldCustomerProportion Done!'
         
 OldCustomerProportion()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetOldCustomerProportion(outputTable):
+    inputTable = {}
+    with open('../csv/item_old_customer_proportion.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            OldCustomerProportion = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(OldCustomerProportion)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        outputTable[key].append(inputTable[item_id])

@@ -51,4 +51,27 @@ def DealRate():
     
 DealRate()
 
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetDealRate(outputTable):
+    inputTable = {}
+    with open('../csv/ic_deal_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            DealRate = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(DealRate)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        outputTable[key].append(inputTable[item_id])
 

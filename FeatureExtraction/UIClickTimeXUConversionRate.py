@@ -39,4 +39,30 @@ def clickXConversionRate():
     
 clickXConversionRate()
 
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''   
+def GetclickXConversionRate(outputTable):
+    inputTable = {}
+    with open('../csv/ui_click_x_u_conversion_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ui_id = row[0]+' '+row[1]
+            conversion_rate = row[2]
+            
+            if row[0] == 'user_id':
+                continue
+
+            inputTable[ui_id] = float(conversion_rate)            
+    
+    for key in outputTable.keys():
+        if not inputTable.get(key):
+            outputTable[key]['conversion_rate'] = 0
+        else:
+            outputTable[key]['conversion_rate'] = inputTable[key]
+
             

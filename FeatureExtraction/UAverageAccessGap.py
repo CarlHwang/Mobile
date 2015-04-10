@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
+from Sampling import Tool
 
 import csv
 
@@ -55,7 +56,6 @@ if __name__ == '__main__':
     AverageAccessGap()
     pass
 
-
 '''
 #
 #
@@ -76,8 +76,8 @@ def GetUserAvgAccessGap(outputTable):
                 continue
             
             inputTable[user_id] = access_gap
-    
+
     for key in outputTable.keys():
         user_id = key.split()[0]
-        outputTable[key]['user_average_access_gap'] = inputTable[user_id]
+        outputTable[key].append(inputTable[user_id])
 

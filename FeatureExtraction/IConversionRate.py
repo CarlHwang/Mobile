@@ -39,3 +39,27 @@ def ConversionRate():
     print 'IConversionRate Done!'
         
 ConversionRate()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetIConversionRate(outputTable):
+    inputTable = {}
+    with open('../csv/item_conversion_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            ConversionRate = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(ConversionRate)            
+    
+    for key in outputTable.keys():
+        user_id = key.split()[1]
+        outputTable[key].append(inputTable[user_id])

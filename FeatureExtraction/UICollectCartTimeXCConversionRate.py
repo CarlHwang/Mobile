@@ -42,3 +42,28 @@ def collectCartXConversionRate():
     print 'collectCartXConversionRate Done!'
     
 collectCartXConversionRate()
+
+
+            
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetUIcollectCartXConversionRate(outputTable):
+    inputTable = {}
+    with open('../csv/ui_collect_cart_x_c_conversion_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]+' '+row[1]
+            feature = row[2]
+            
+            if user_id == 'user_id':
+                continue
+            
+            inputTable[user_id] = float(feature)            
+    
+    for key in outputTable.keys():
+        outputTable[key]['collect_cart_x_c_conversion_rate'] = inputTable[key]

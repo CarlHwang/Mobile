@@ -48,7 +48,34 @@ def ClickRate():
                 spamwriter.writerow([item_id, itemTable[item_id]/float(categoryTable[item_category])])
 
     print 'ClickRate Done!'
-    
+
 ClickRate()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetClickRate(outputTable):
+    inputTable = {}
+    with open('../csv/ic_click_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            ClickRate = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(ClickRate)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        if not inputTable.get(item_id):
+            outputTable[key].append(0)
+        else:
+            outputTable[key].append(inputTable[item_id])
 
 

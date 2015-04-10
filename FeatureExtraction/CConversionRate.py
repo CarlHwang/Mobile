@@ -39,3 +39,44 @@ def ConversionRate():
     print 'CConversionRate Done!'
         
 ConversionRate()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetCConversionRate(outputTable):
+    item_to_cate = {}
+    with open('../csv/train_user_time_to_int_cleaned.csv','rb') as f1:
+        reader = csv.reader(f1)
+        for row in reader:
+            item_id = row[1]
+            cate = row[4]
+            if item_id=='item_id':
+                continue
+            if not item_to_cate.get(item_id):
+                item_to_cate[item_id] = cate
+                
+
+    inputTable = {}
+    with open('../csv/category_conversion_rate.csv', 'rb') as f2:
+        reader = csv.reader(f2)
+        for row in reader:
+            item_category = row[0]
+            ConversionRate = row[1]
+            
+            if item_category == 'item_category':
+                continue
+            
+            inputTable[item_id] = float(ConversionRate)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        item_category = item_to_cate[item_id]
+        if not inputTable.get(item_category):
+            outputTable[key].append(0)
+        else:
+            outputTable[key].append(inputTable[item_category])
+        

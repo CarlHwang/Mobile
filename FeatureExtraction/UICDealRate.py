@@ -33,7 +33,7 @@ def DealRate():
                 else:
                     categoryTable[item_category][user_id] = deal
             else:
-                categoryTable[item_category] = {user_id : deal}
+                categoryTable[item_category] = {user_id : deal} 
                 
     # 输出的文件头
     outfile = open('../csv/uic_deal_rate.csv', 'wb')
@@ -57,3 +57,31 @@ def DealRate():
     print 'DealRate() Done!'
     
 DealRate()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetUICDealate(outputTable):
+    inputTable = {}
+    with open('../csv/uic_deal_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            ui_id = row[0]+' '+row[1]
+            deal_rate = row[2]
+            
+            if row[0] == 'user_id':
+                continue
+            
+            inputTable[ui_id] = float(deal_rate)            
+    
+    for key in outputTable.keys():
+#         if not inputTable.get(key):
+#             outputTable[key]['uic_deal_rate'] = 0
+#         else:
+        outputTable[key].append(inputTable[key])
+
+

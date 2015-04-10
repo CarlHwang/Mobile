@@ -39,3 +39,30 @@ def AccessBeforeDeal():
     print "IAccessBeforeDeal Done!"
 
 AccessBeforeDeal()
+
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetAccessBeforeDeal(outputTable):
+    inputTable = {}
+    with open('../csv/item_access_before_deal.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            AverageAccessBefore = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(AverageAccessBefore)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        if not inputTable.get(item_id):
+            outputTable[key].append(0)
+        else:
+            outputTable[key].append(inputTable[item_id])

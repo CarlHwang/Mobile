@@ -170,3 +170,9 @@ if __name__ == '__main__':
     lastAccessTimeOverItemForBeh('2')   # for collect
     lastAccessTimeOverItemForBeh('3')   # for cart
     
+    
+        
+
+        
+        
+    

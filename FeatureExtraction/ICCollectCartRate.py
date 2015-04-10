@@ -52,4 +52,27 @@ def CollectCartRate():
     
 CollectCartRate()
 
+'''
+#
+#
+#    GET FEATURE
+#
+#
+'''
+def GetCollectCartRate(outputTable):
+    inputTable = {}
+    with open('../csv/ic_collect_cart_rate.csv', 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            item_id = row[0]
+            CollectCartRate = row[1]
+            
+            if item_id == 'item_id':
+                continue
+            
+            inputTable[item_id] = float(CollectCartRate)            
+    
+    for key in outputTable.keys():
+        item_id = key.split()[1]
+        outputTable[key].append(inputTable[item_id])
 
