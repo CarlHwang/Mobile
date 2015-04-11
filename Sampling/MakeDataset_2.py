@@ -7,9 +7,11 @@ from Sampling import GetFeature
 
 negative_sample_num = 4574733
 
-featureTable = {}
+
 
 def MakeDateset(negative_sample_needed, target_model, date):
+    
+    featureTable = {}
     
     sampling_rate = negative_sample_needed / float(negative_sample_num) * 1000000
     
@@ -23,7 +25,7 @@ def MakeDateset(negative_sample_needed, target_model, date):
             if user_id == 'user_id':
                 continue
             
-            key = user_id  +' ' + item_id
+            key = user_id  + ' ' + item_id
             
             if not label == '1':
                 seed = random.randint(1,1000000)
@@ -79,9 +81,10 @@ def MakeDateset(negative_sample_needed, target_model, date):
     GetFeature.GetDealAfterAccess(featureTable, '1')
     GetFeature.GetDealAfterAccess(featureTable, '2')
     GetFeature.GetDealAfterAccess(featureTable, '3')
-
     
-    path = '../csv/trainningset/' + date + '_' + target_model + '_' + negative_sample_needed + '.csv'
+    print "---------------------------------------------------------------"
+    
+    path = '../csv/trainningset/' + date + '_' + target_model + '_' + str(negative_sample_needed) + '.csv'
     outfile = open(path, 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
                 
@@ -96,5 +99,12 @@ def MakeDateset(negative_sample_needed, target_model, date):
         
 
 MakeDateset(5000, 'lr', '0411')
+MakeDateset(5001, 'lr', '0411')
+MakeDateset(6000, 'lr', '0411')
+MakeDateset(6001, 'lr', '0411')
+MakeDateset(7000, 'lr', '0411')
+MakeDateset(8000, 'lr', '0411')
+MakeDateset(9000, 'lr', '0411')
+MakeDateset(10000, 'lr', '0411')
 
 
