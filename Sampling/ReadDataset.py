@@ -35,7 +35,12 @@ def ReadDataset(negative_sample_needed, target_model, date):
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
-            dataset.append(row[2:])
+            transformed_row = []
+            label = int(row[2])
+            transformed_row.append(label)
+            for i in range(3,len(row)):
+                transformed_row.append(float(row[i]))
+            dataset.append(transformed_row)
             
     scaler = preprocessing.MinMaxScaler()
     scaled_dataset = scaler.fit_transform(dataset)
