@@ -32,10 +32,10 @@ class RandomForest():
         self.boostraped = []
         self.bagging_table = None
         self.criterion = criterion
-        self.buildrandomforest(dataset, min_sample_split, max_depth)
+        self.buildRandomForest(dataset, boostrap_size, min_sample_split, max_depth)
         
         
-    def Boostrap(self, dataset, boostrap_size):
+    def boostrap(self, dataset, boostrap_size):
         
         size_dataset = len(dataset)
         self.bagging_table = [[0]*size_dataset]*self.num_tree
@@ -203,7 +203,7 @@ class RandomForest():
             
             err = 0.0
             if self.err_function == 'mse':
-                err = self.squareerror(label, predicted)
+                err = self.squareError(label, predicted)
                 
             Eoob += err
             
@@ -216,6 +216,12 @@ class RandomForest():
         for feature_index in range(dataset[0] - 1):
             importance = Eoob - self.outOfBagErrorPermuted(dataset, feature_index)
             importances.append(importance)
+    
+            
+    def printForest(self):
+        for tree in self.forest:
+            tree.printTree()
+            
             
             
     '''

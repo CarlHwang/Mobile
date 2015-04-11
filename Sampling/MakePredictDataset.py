@@ -2,38 +2,26 @@
 # -*- coding:utf-8 -*-
 
 import csv
-import random
 from Sampling import GetFeature
 
-negative_sample_num = 4574733
 
 
-
-def MakeDateset(negative_sample_needed, target_model, date):
-    
+def MakePredictDateset():
     featureTable = {}
+
     
-    sampling_rate = negative_sample_needed / float(negative_sample_num) * 1000000
-    
-    with open('../csv/label.csv', 'rb') as f:
+    with open('../csv/testingset/predict_set.csv', 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
             user_id = row[0]
             item_id = row[1]
-            label = row[2]
             
             if user_id == 'user_id':
                 continue
             
-            key = user_id  + ' ' + item_id
-            
-            if not label == '1':
-                seed = random.randint(1,1000000)
-                if seed > sampling_rate:
-                    continue
-            
-            featureTable[key] = [label]
-            
+            key = user_id  +' ' + item_id
+     
+            featureTable[key] = []
             
     GetFeature.GetAverageAccessGap(featureTable, '1') 
     GetFeature.GetAverageAccessGap(featureTable, '2') 
@@ -82,11 +70,9 @@ def MakeDateset(negative_sample_needed, target_model, date):
     GetFeature.GetDealAfterAccess(featureTable, '1')
     GetFeature.GetDealAfterAccess(featureTable, '2')
     GetFeature.GetDealAfterAccess(featureTable, '3')
+
     
-    print "---------------------------------------------------------------"
-    
-    path = '../csv/trainningset/' + date + '_' + target_model + '_' + str(negative_sample_needed) + '.csv'
-    outfile = open(path, 'wb')
+    outfile = open('../csv/testingset/predict_set_feature.csv', 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
                 
     for key in featureTable.keys():
@@ -96,29 +82,7 @@ def MakeDateset(negative_sample_needed, target_model, date):
         row = [user_id, item_id]
         row.extend(features)
         
-        # double the positive sample
-        write_time = 1
-        if features[0] == '1':
-            write_time = 2
-        for i in range(write_time):
-            spamwriter.writerow(row)
-        
+        spamwriter.writerow(row)
 
-MakeDateset(10000, 'lr', '0413')
-MakeDateset(10001, 'lr', '0413')
-MakeDateset(12000, 'lr', '0413')
-MakeDateset(12001, 'lr', '0413')
-MakeDateset(14000, 'lr', '0413')
-MakeDateset(16000, 'lr', '0413')
-MakeDateset(18000, 'lr', '0413')
-MakeDateset(20000, 'lr', '0413')
-
-MakeDateset(10000, 'rf', '0413')
-MakeDateset(10001, 'rf', '0413')
-MakeDateset(12000, 'rf', '0413')
-MakeDateset(12001, 'rf', '0413')
-MakeDateset(14000, 'rf', '0413')
-MakeDateset(16000, 'rf', '0413')
-MakeDateset(18000, 'rf', '0413')
-MakeDateset(20000, 'rf', '0413')
+MakePredictDateset()
 

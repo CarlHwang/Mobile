@@ -11,16 +11,27 @@ class DecisionTree():
     
     def __init__(self, 
                 dataset, 
-                criterion=gini, 
+                criterion='gini', 
                 min_sample_split=5, 
                 max_depth=None):
         
-        self.root = self.buildrandomtree(dataset, 0, min_sample_split, max_depth)
         self.criterion = criterion
-        pass
+        self.root = self.buildRandomTree(dataset, 0, min_sample_split, max_depth)
+            
     
     def classify(self, vec):
-        pass
+        
+        current_node = self.root
+        while not current_node.label == None:
+            
+            value = vec[current_node.feature]
+            if value >= current_node.value:
+                current_node = current_node.truebranch
+            else:
+                current_node = current_node.falsebranch
+                
+        return current_node.label
+        
     
     def divideset(self, dataset, axis, value):
         ''''Make a function that tells us if a row is in 
@@ -44,7 +55,7 @@ class DecisionTree():
         from math import log
         log2 = lambda x:log(x) / log(2) 
          
-        labels = self.uniquelabels(dataset)
+        labels = self.uniqueLabels(dataset)
         ent = 0.0
         
         for l in labels.keys():
@@ -57,7 +68,7 @@ class DecisionTree():
     def gini(self, dataset):
         '''the gini coeffience'''
         
-        labels = self.uniquelabels(dataset)
+        labels = self.uniqueLabels(dataset)
         gini = 1.0
         
         for l in labels.keys():
@@ -79,7 +90,7 @@ class DecisionTree():
     
     def getVotingLabel(self, dataset):
         random_pick = False
-        labels = self.uniquelabels(dataset)
+        labels = self.uniqueLabels(dataset)
         winner_label, winner_value = None, 0
         
         for key in labels.keys():
@@ -92,7 +103,7 @@ class DecisionTree():
         return winner_label
     
     
-    def pickSplitFeat(self, dataset, criterion=gini, random_pick=-1):
+    def pickSplitFeat(self, dataset, random_pick=-1):
         '''pick a best split feature and its split point for spliting,
         return the feature index and the value.'''
         
@@ -107,7 +118,7 @@ class DecisionTree():
                 randint = random.randint(0, lenvec-1)
                 if randint not in candidates: candidates.append(randint)
         else:
-            candidates = [i for i in range(0, lenvec-1)]
+            candidates = [i for i in range(0, lenvec)]
         
         for feat_idx in candidates:
             feat_list = [vec[feat_idx] for vec in dataset]
@@ -120,11 +131,14 @@ class DecisionTree():
                 set1, set2 = self.divideset(dataset, feat_idx, value)
                 p = float(len(set1)) / len(dataset)
                 
-                tgini = p*self.criterion(set1) + (1-p)*self.criterion(set2)
-                if tgini < mingini:
-                    mingini = tgini
-                    split_feat = feat_idx
-                    split_val = value
+                if self.criterion == 'gini':
+                    
+                    tgini = p*self.gini(set1) + (1-p)*self.gini(set2)
+                    if tgini < mingini:
+                        print feat_idx, value, tgini
+                        mingini = tgini
+                        split_feat = feat_idx
+                        split_val = value
                     
         return split_feat, split_val
     
@@ -145,20 +159,34 @@ class DecisionTree():
             return decisionnode(label=neighbor_label)
         
         if sizedataset <= min_sample_split: 
-            return decisionnode(label=self.getvotinglabel(dataset))
+            return decisionnode(label=self.getVotingLabel(dataset))
         
-        if current_level < max_depth:
-            return decisionnode(label=self.getvotinglabel(dataset))
+        if not max_depth == None and current_level >= max_depth:
+            return decisionnode(label=self.getVotingLabel(dataset))
         
-        split_feat, split_val = self.picksplitfeat(dataset, criterion=self.criterion) 
+        split_feat, split_val = self.pickSplitFeat(dataset) 
+        print split_feat, split_val
         set1, set2 = self.divideset(dataset, split_feat, split_val)
         
-        major_label_of_set1 = self.getvotinglabel(set1)
-        major_label_of_set2 = self.getvotinglabel(set2)
+        major_label_of_set1 = self.getVotingLabel(set1)
+        major_label_of_set2 = self.getVotingLabel(set2)
         
-        true_branch = self.buildrandomtree(set1, current_level, min_sample_split, max_depth, neighbor_label=major_label_of_set2)
-        false_branch = self.buildrandomtree(set2, current_level, min_sample_split, max_depth, neighbor_label=major_label_of_set1)
+        true_branch = self.buildRandomTree(set1, current_level, min_sample_split, max_depth, neighbor_label=major_label_of_set2)
+        false_branch = self.buildRandomTree(set2, current_level, min_sample_split, max_depth, neighbor_label=major_label_of_set1)
         
         return decisionnode(feature=split_feat, value=split_val, truebranch=true_branch, falsebranch=false_branch)
         
+        
+    def printTree(self, indent=''):
+        node = self.root
+        if node.label != None:
+            print str(node.label)
+        else:
+            print 'row[' + str(node.feature) + ']>=' + str(node.value) + '? '
+    
+            print indent + 'T->',
+            self.printTree(node.truebranch, indent + '  ')
+            print indent + 'F->',
+            self.printTree(node.falsebranch, indent + '  ')
+            
         
