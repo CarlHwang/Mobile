@@ -1,5 +1,6 @@
 #! /usr/bin/env python
 # -*- coding:utf-8 -*-
+import time as t
 
 import csv
 from Globals import behaviorStr, hasGapBetween
@@ -7,6 +8,8 @@ from Globals import behaviorStr, hasGapBetween
 # 8. 用户对该商品的最后一次交互的前后1/2/3/4/5（共3/5/7/9/11小时）中，一共点击、收藏、加购、购买了多少个同类的不同品牌
 
 def ItemOfSameCategoryInRange(behavior):
+    localtime = t.asctime( t.localtime(t.time()) )
+    print "Start: Local current time :", localtime
     table = {}
     
     rangeBounds = [1,2,3,4,5]
@@ -70,14 +73,19 @@ def ItemOfSameCategoryInRange(behavior):
                         if hasGapBetween(similar_item_access_time, lowerbound, upperbound, lowerinclude=True):
                             num_similar_item += 1
                     result.append(num_similar_item)
+                spamwriter.writerow(result)
             
-                            
+    localtime = t.asctime( t.localtime(t.time()) )
+    print "End:Local current time :", localtime                       
     print 'ItemOfSameCategoryInRange Done!'
-    
+
+
 ItemOfSameCategoryInRange('1')
 ItemOfSameCategoryInRange('2')
 ItemOfSameCategoryInRange('3')
 ItemOfSameCategoryInRange('4')
+
+
 
 
 
