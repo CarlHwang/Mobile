@@ -5,11 +5,13 @@ import csv
 import random
 from Sampling import GetFeature
 
-
+negative_sample_num = 4574733
 
 featureTable = {}
 
-def MakeDateset(sampling_rate):
+def MakeDateset(negative_sample_needed, target_model, date):
+    
+    sampling_rate = negative_sample_needed / float(negative_sample_num) * 1000000
     
     with open('../csv/label.csv', 'rb') as f:
         reader = csv.reader(f)
@@ -23,6 +25,11 @@ def MakeDateset(sampling_rate):
             
             key = user_id  +' ' + item_id
             
+            if not label == '1':
+                seed = random.randint(1,1000000)
+                if seed > sampling_rate:
+                    continue
+            
             featureTable[key] = [label]
             
     GetFeature.GetAverageAccessGap(featureTable, '1') 
@@ -31,7 +38,7 @@ def MakeDateset(sampling_rate):
     GetFeature.GetAverageAccessGap(featureTable, '4') 
     
     GetFeature.GetBehaviorCoutingInCountingHour(featureTable, '1')       
-    GetFeature.GetBehaviorCoutingInCountingHour(featureTable, '2')       
+    GetFeature.GetBehaviorCoutingInCountingHour(featureTable, '2')
     GetFeature.GetBehaviorCoutingInCountingHour(featureTable, '3')       
     GetFeature.GetBehaviorCoutingInCountingHour(featureTable, '4')       
      
@@ -68,39 +75,26 @@ def MakeDateset(sampling_rate):
     GetFeature.GetItemOfSameCategoryInRange(featureTable, '2')
     GetFeature.GetItemOfSameCategoryInRange(featureTable, '3')
     GetFeature.GetItemOfSameCategoryInRange(featureTable, '4')
+    
+    GetFeature.GetDealAfterAccess(featureTable, '1')
+    GetFeature.GetDealAfterAccess(featureTable, '2')
+    GetFeature.GetDealAfterAccess(featureTable, '3')
 
     
-    outfile = open('../csv/trainningset/dataset.csv', 'wb')
+    path = '../csv/trainningset/' + date + '_' + target_model + '_' + negative_sample_needed + '.csv'
+    outfile = open(path, 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
                 
-    sampling_rate *= 10000
-    
-    total = 0
-    select = 0
-    
     for key in featureTable.keys():
-        label = featureTable[key][0]
-        
-        if not label == '1':
-            total += 1
-            seed = random.randint(1,10000)
-            print seed, sampling_rate
-            if seed > sampling_rate:
-                continue
-            select += 1
         
         user_id, item_id = key.split()[0], key.split()[1]
-        
-
         features = featureTable[key]
         row = [user_id, item_id]
         row.extend(features)
         
         spamwriter.writerow(row)
         
-    print total, select
 
-
-MakeDateset(0.0011)
+MakeDateset(5000, 'lr', '0411')
 
 

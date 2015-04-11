@@ -40,8 +40,6 @@ def GetAverageAccessGap(outputTable, behavior):
         outputTable[key].extend(features)
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetAverageAccessGap Done!'
-    
-        
 
 
 def GetDealAfterAccess(outputTable, behavior):
@@ -341,5 +339,4 @@ def GetItemOfSameCategoryInRange(outputTable, behavior):
         outputTable[key].extend(features)
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetItemOfSameCategoryInRange Done!'
-
 
