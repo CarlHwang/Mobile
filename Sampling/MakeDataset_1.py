@@ -19,14 +19,14 @@ def MakeDateset(sampling_rate):
             if user_id == 'user_id':
                 continue
             
-            key = user_id + ' ' + item_id
+            key = user_id  +' ' + item_id
             
             featureTable[key] = {'label':label}
             
     BehaviorCount.GetItemBehaviorCount(featureTable)
     UAccessBeforeDeal.GetUserAccessBeforeDeal(featureTable)
     UAverageAccessGap.GetUserAvgAccessGap(featureTable)
-            
+    #UserDealFreq.GetUserDealFreq(featureTable)        
     
     # 输出的文件头
     outfile = open('../csv/trainningset/dataset.csv', 'wb')
@@ -58,7 +58,7 @@ def MakeDateset(sampling_rate):
         access_before_deal = featureTable[key]['access_before_deal']
         
         spamwriter.writerow([user_id, item_id, user_average_access_gap, item_click_count, item_collect_count, item_cart_count, item_deal_count, access_before_deal, label])
-            
+        
     print total, select
     
 MakeDateset(0.2)

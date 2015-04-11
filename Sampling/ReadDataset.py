@@ -24,7 +24,6 @@ def ReadDataset(dataset_name):
             sample.append(int(row[-1]))
                 
             dataset.append(sample)
-            print sample
     
     return dataset
 
