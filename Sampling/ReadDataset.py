@@ -5,33 +5,10 @@
 import csv
 from sklearn import preprocessing
 
-# def ReadDataset(dataset_name):
-#     
-#     dataset = []
-#     
-#     path = '../csv/trainningset/' + dataset_name + '.csv'
-#     with open(path, 'rb') as f:
-#         reader = csv.reader(f)
-#         for row in reader:
-#             user_id = row[0]
-#             
-#             if user_id == 'user_id':
-#                 continue
-#             
-#             rowlen = len(row)
-#             sample = []
-#             for i in range(2,rowlen-1):
-#                 sample.append(float(row[i]))
-#             sample.append(int(row[-1]))
-#                 
-#             dataset.append(sample)
-#     
-#     return dataset
-
-def ReadDataset(negative_sample_needed, target_model, date):
+def ReadDataset(negative_sample_needed, target_model, date, level = '1'):
     
     dataset = []
-    path = '../csv/trainningset/' + date + '_' + target_model + '_' + str(negative_sample_needed) + '.csv'
+    path = '../csv/trainningset/level' + level + '/' + date + '_' + target_model + '_' + str(negative_sample_needed) + '.csv'
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
@@ -47,10 +24,10 @@ def ReadDataset(negative_sample_needed, target_model, date):
     return scaled_dataset
 
 
-def ReadPredictDataset(hours, isWithID):
+def ReadPredictDataset(hours, isWithID, level = '1'):
     dataset = []
     idset = []
-    path = '../csv/testingset/predict_set_feature_' + str(hours) + 'h.csv'
+    path = '../csv/testingset/level' + level + '/predict_set_feature_' + str(hours) + 'h.csv'
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:

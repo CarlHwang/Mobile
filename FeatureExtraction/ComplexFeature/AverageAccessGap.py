@@ -64,10 +64,10 @@ def AverageAccessGap(behavior):
     
     print 'AverageAccessGap Over'
     
-# AverageAccessGap('1')
-# AverageAccessGap('2')
-# AverageAccessGap('3')
-# AverageAccessGap('4')
+AverageAccessGap('1')
+AverageAccessGap('2')
+AverageAccessGap('3')
+AverageAccessGap('4')
 
 
 '''
@@ -118,6 +118,5 @@ def GetAverageAccessGap(outputTable, behavior):
 #         for i in range(len(head)):
 #             feature_name = 'AverageAccessGap_' + str(head[i])
 #             outputTable[key][feature_name] = features[i]
-        
 
     

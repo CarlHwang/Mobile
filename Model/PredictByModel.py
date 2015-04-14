@@ -93,7 +93,7 @@ def LRAvgPredict(date,top_k=650, hours=24):
 
 '''Random Forest'''
 def RFSinglePredict(num_negative_sample, date, top_k = 650, hours=24):
-    test_data, id_set = ReadPredictDataset(hours, isWithID=True)
+    test_data, id_set = ReadPredictDataset(hours, isWithID=True, level='2')
     rf = joblib.load('./PersistModel/rf_' + str(num_negative_sample) + '_' + date + '.model')
     result = rf.predict_proba(test_data)
     
@@ -127,7 +127,7 @@ def RFAvgPredict(date, top_k=650, hours=24):
     avg_row = []
     
     #
-    test_data, id_set = ReadPredictDataset(hours, isWithID=True)
+    test_data, id_set = ReadPredictDataset(hours, isWithID=True, level='2')
     for i in range(len(num_negative_samples)):
         rf = joblib.load('./PersistModel/rf_' + str(num_negative_samples[i]) + '_' + date + '.model')
         result = rf.predict_proba(test_data)

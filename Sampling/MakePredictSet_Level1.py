@@ -8,7 +8,7 @@ from Sampling import GetFeature
 def MakePredictDateset(hours):
     featureTable = {}
 
-    path = '../csv/testingset/predict_set_' + str(hours) + 'h.csv'
+    path = '../csv/testingset/level1/predict_set_' + str(hours) + 'h.csv'
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
@@ -71,7 +71,7 @@ def MakePredictDateset(hours):
     GetFeature.GetDealAfterAccess(featureTable, '3')
 
     
-    out_path = '../csv/testingset/predict_set_feature_' + str(hours) + 'h.csv'
+    out_path = '../csv/testingset/level1/predict_set_feature_' + str(hours) + 'h.csv'
     outfile = open(out_path, 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
                 
@@ -84,5 +84,5 @@ def MakePredictDateset(hours):
         
         spamwriter.writerow(row)
 
-MakePredictDateset(360)
+MakePredictDateset(720)
 
