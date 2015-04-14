@@ -5,12 +5,11 @@ import csv
 from Sampling import GetFeature
 
 
-
-def MakePredictDateset():
+def MakePredictDateset(hours):
     featureTable = {}
 
-    
-    with open('../csv/testingset/predict_set.csv', 'rb') as f:
+    path = '../csv/testingset/predict_set_' + str(hours) + 'h.csv'
+    with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
             user_id = row[0]
@@ -72,7 +71,8 @@ def MakePredictDateset():
     GetFeature.GetDealAfterAccess(featureTable, '3')
 
     
-    outfile = open('../csv/testingset/predict_set_feature.csv', 'wb')
+    out_path = '../csv/testingset/predict_set_feature_' + str(hours) + 'h.csv'
+    outfile = open(out_path, 'wb')
     spamwriter = csv.writer(outfile, dialect = 'excel')
                 
     for key in featureTable.keys():
@@ -84,5 +84,5 @@ def MakePredictDateset():
         
         spamwriter.writerow(row)
 
-MakePredictDateset()
+MakePredictDateset(720)
 

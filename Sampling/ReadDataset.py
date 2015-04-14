@@ -47,10 +47,10 @@ def ReadDataset(negative_sample_needed, target_model, date):
     return scaled_dataset
 
 
-def ReadPredictDataset(isWithID):
+def ReadPredictDataset(hours, isWithID):
     dataset = []
     idset = []
-    path = '../csv/testingset/predict_set_feature.csv'
+    path = '../csv/testingset/predict_set_feature_' + str(hours) + 'h.csv'
     with open(path, 'rb') as f:
         reader = csv.reader(f)
         for row in reader:
