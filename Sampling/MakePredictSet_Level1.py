@@ -84,5 +84,5 @@ def MakePredictDateset(hours):
         
         spamwriter.writerow(row)
 
-MakePredictDateset(720)
+MakePredictDateset(360)
 
