@@ -6,8 +6,6 @@ import time as t
 from Globals import behaviorStr
 
 
-
-
 def GetAverageAccessGap(outputTable, behavior):
     inputTable = {}
     behavior_str = behaviorStr(behavior)
@@ -29,15 +27,14 @@ def GetAverageAccessGap(outputTable, behavior):
             inputTable[key] = features
  
      
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():       
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetAverageAccessGap Done!'
 
@@ -62,15 +59,14 @@ def GetDealAfterAccess(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
      
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetDealAfterAccess Done!'
         
@@ -96,15 +92,14 @@ def GetBehaviorCoutingInCountingHour(outputTable, behavior):
             inputTable[key] = features
 
 
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetBehaviorCoutingInCountingHour Done!'
 
@@ -129,15 +124,14 @@ def GetBehaviorHourCountBeforePeriod(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():       
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetBehaviorHourCountBeforePeriod Done!'
 
@@ -162,15 +156,14 @@ def GetBehaviorHourCountInPeriod(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetBehaviorHourCountInPeriod Done!'
     
@@ -195,15 +188,14 @@ def GetCategoryBehaviorCount(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetCategoryBehaviorCount Done!'
         
@@ -228,20 +220,19 @@ def GetEarliestBehavior(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():       
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
-    print localtime,'GetEarliestBehavior Done!'      
+    print localtime,'GetEarliestBehavior Done!'  
+    
+        
 #for 1,3,4     
-
-
 def GetFirstAccessAgainstLast(outputTable, behavior):
     inputTable = {}
     behavior_str = behaviorStr(behavior)
@@ -262,15 +253,14 @@ def GetFirstAccessAgainstLast(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():       
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetFirstAccessAgainstLast Done!'
 
@@ -295,15 +285,14 @@ def GetItemCategoryBehaviorRatio(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetItemCategoryBehaviorRatio Done!'
 
@@ -328,15 +317,42 @@ def GetItemOfSameCategoryInRange(outputTable, behavior):
             key = user_id + ' ' + item_id
             inputTable[key] = features
  
-    for key in outputTable.keys():
-        user_id, item_id = key.split()[0], key.split()[1]
-        
+    for key in outputTable.keys():        
         if not inputTable.get(key):
             features = [0]*len_head
         else:
             features = inputTable[key]
         
         outputTable[key].extend(features)
+        
     localtime = t.asctime(t.localtime(t.time()))
     print localtime,'GetItemOfSameCategoryInRange Done!'
-
+    
+def GetLROutput(outputTable):
+    inputTable = {}
+    
+    path = '../csv/complex/logistic_regression_output.csv'
+    len_head = None
+    with open(path, 'rb') as f:
+        reader = csv.reader(f)
+        for row in reader:
+            user_id = row[0]
+            item_id = row[1]
+            features = row[2:]
+            len_head = len(features)
+            
+            if user_id == 'user_id':
+                continue
+            
+            key = user_id + ' ' + item_id
+            inputTable[key] = features
+            
+    for key in outputTable.keys():      
+        if not inputTable.get(key):
+            features = [0]*len_head
+        else:
+            features = inputTable[key]
+        outputTable[key].extend(features)
+        
+    localtime = t.asctime(t.localtime(t.time()))
+    print localtime,'GetLROutput Done!'
