@@ -33,6 +33,6 @@
 ------------------
 0415
 0085253732846	加入LROutput特征的jk随机森林，predict_set_36h, top_k = 400  		7.66%	8.25%	7.15%
-14714927835 	加入LROutput特征的ch随机森林，predict_set_41h, top_k = 650
+14714927835 	加入LROutput特征的ch随机森林，predict_set_41h, top_k = 650		8.10%	6.92%	9.76%
 joaquin2323	加入LROutput特征的ch随机森林，predict_set_36h, top_k = 650
 0085267420610	加入LROutput特征的ch随机森林+simplerule，predict_set_36h, top_k = 650 	3.60% 	3.07% 	4.33%
