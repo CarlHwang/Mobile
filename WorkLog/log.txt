@@ -33,3 +33,5 @@
 ------------------
 0415
 0085253732846	加入LROutput特征的jk随机森林，Top_k = 400
+14714927835 	加入LROutput特征的ch随机森林，predict_set_41h
+0085267420610	加入LROutput特征的ch随机森林，predict_set_36h
