@@ -39,7 +39,7 @@ joaquin2323	加入LROutput特征的jk随机森林，predict_set_36h, top_k = 650
 
 
 0418	正负比例1：10的十个样本
-0085253732846	融合了16，17，18号的RF和GBRT，predict_set_36h, top_k = 400 
+0085253732846	融合了16，17，18号的RF和GBRT，predict_set_36h, top_k = 650 
 
 14714927835 	融合了16，17，18号的RF，predict_set_36h，top_k = 650
     		RandomForestClassifier(n_estimators = 500, oob_score=True, n_jobs=-1, max_depth = 10, max_features=0.1)
