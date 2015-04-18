@@ -36,3 +36,19 @@
 14714927835 	加入LROutput特征的ch随机森林，predict_set_41h, top_k = 650		8.10%	6.92%	9.76%
 joaquin2323	加入LROutput特征的jk随机森林，predict_set_36h, top_k = 650		8.64%	7.38%	10.41%
 0085267420610	加入LROutput特征的ch随机森林+simplerule，predict_set_36h, top_k = 650 	3.60% 	3.07% 	4.33%
+
+
+0418	正负比例1：10的十个样本
+0085253732846	融合了16，17，18号的RF和GBRT，predict_set_36h, top_k = 400 
+
+14714927835 	融合了16，17，18号的RF，predict_set_36h，top_k = 650
+    		RandomForestClassifier(n_estimators = 500, oob_score=True, n_jobs=-1, max_depth = 10, max_features=0.1)
+    		
+joaquin2323	融合的18号的GBRT，predict_set_36h,top_k= 650
+ 		GradientBoostingClassifier(n_estimators = 300, max_depth=7, max_features='auto',loss='exponential', subsample=0.7)
+
+0085267420610	融合了16，17，18号的GBRT，predict_set_36h，top_k = 650
+    		GradientBoostingClassifier(n_estimators = 400, max_depth=5, max_features='auto',loss='exponential', subsample=0.6)
+
+
+
